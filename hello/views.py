@@ -6,15 +6,22 @@ from .models import Greeting
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, 'index.html')
+    context = {
+        "title":"title i inserted"
+    }
+    return render(request, 'index.html', context)
 
+def about_page(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, 'about_page.html')
 
-def db(request):
+def contact_page(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, 'contact/views.html')
 
-    greeting = Greeting()
-    greeting.save()
-
-    greetings = Greeting.objects.all()
-
-    return render(request, 'db.html', {'greetings': greetings})
-
+    if request.method == "POST":
+         print(request.POST)
+         print(request.POST.get('fullname'))
+    #     print(request.POST.get('email'))
+    #     print(request.POST.get('content'))
+    return render(request, "contact/view.html", context)
