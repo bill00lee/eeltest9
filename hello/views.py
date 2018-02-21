@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Greeting
-from gettingstarted.forms import ContactForm
+from gettingstarted.forms import ContactForm, LoginForm
 
 
 
@@ -38,3 +38,30 @@ def contact_page(request):
     #     print(request.POST.get('email'))
     #     print(request.POST.get('content'))
     return render(request, "contact/view.html", context)
+
+def login_page(request):
+    form = LoginForm(request.POST or None)
+    context = {
+        "title":"Log in",
+        "form":form
+    }
+    print("User logged in")
+    #print(request.user.is_authenticated())
+    if form.is_valid():
+        print(form.cleaned_data)
+        username  = form.cleaned_data.get("username")
+        password  = form.cleaned_data.get("password")
+        user = authenticate(request, username=username, password=password)
+        print(user)
+        #print(request.user.is_authenticated())
+        if user is not None:
+            #print(request.user.is_authenticated())
+            login(request, user)
+            # Redirect to a success page.
+            #context['form'] = LoginForm()
+            return redirect("/")
+        else:
+            # Return an 'invalid login' error message.
+            print("Error")
+
+    return render(request, "auth/login.html", context)
