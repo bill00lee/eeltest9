@@ -1,19 +1,22 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from .models import Greeting
-from gettingstarted.forms import ContactForm, LoginForm
+from gettingstarted.forms import ContactForm, LoginForm, RegisterForm
 
 
 
 # Create your views here.
-def index(request):
+def home_page(request):
     # return HttpResponse('Hello from Python!')
     context = {
         "title":"homepage",
-        "content":"info about the homepage"
-    }
-    return render(request, 'index.html', context)
+        "content":"info about the homepage",
+            }
+    if request.user.is_authenticated:
+        context["premium_content"] = "Premium content section"
+    return render(request, "home_page.html", context)
 
 def about_page(request):
     # return HttpResponse('Hello from Python!')
@@ -42,8 +45,7 @@ def contact_page(request):
 def login_page(request):
     form = LoginForm(request.POST or None)
     context = {
-        "title":"Log in",
-        "form":form
+        "form": form
     }
     print("User logged in")
     #print(request.user.is_authenticated())
@@ -65,3 +67,13 @@ def login_page(request):
             print("Error")
 
     return render(request, "auth/login.html", context)
+
+def register_page(request):
+    form = RegisterForm(request.POST or None)
+    context = {
+        "form": form
+    }
+
+    if form.is_valid():
+        print(form.cleaned_data)
+    return render(request, "auth/register.html", context)
