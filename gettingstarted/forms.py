@@ -38,3 +38,25 @@ class RegisterForm(forms.Form):
     email       = forms.EmailField(widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "email"}))
     password    = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Password"}))
     password2    = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Password2"}))
+
+    def clean_username(self):
+        username = self.clean_data.get('username')
+        qs = User.objects.filter(username=username)
+        if qs.exists():
+             raise form.ValidationError('username already exists')
+        return username
+
+    def clean_email(self):
+        email = self.clean_data.get('email')
+        qs = User.objects.filter(email=email)
+        if qs.exists():
+            raise form.ValidationError('email already registered')
+        return email
+
+    def clean_data(self):
+        data = self.clean_data.get('data')
+        password = self.clean_data.get('password')
+        password2 = self.clean_data.get('password2')
+        if password2 != password:
+                raise form.ValidationError('passwords do not match')
+        return data
