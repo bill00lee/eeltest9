@@ -7,6 +7,8 @@ from django.urls import path
 from django.contrib import admin
 admin.autodiscover()
 
+from products.views import ProductListView, product_list_view, ProductDetailView, product_detail_view
+
 import hello.views
 
 # Examples:
@@ -19,6 +21,10 @@ urlpatterns = [
     url(r'^contact/$', hello.views.contact_page, name= 'contact_page'),
     url(r'^login/$', hello.views.login_page, name= 'login'),
     url(r'^register/$', hello.views.register_page, name= 'register_page'),
+     url(r'^products/$', ProductListView.as_view()),
+    url(r'^products-fbv/$', product_list_view),
+    url(r'^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
+    url(r'^products-fbv/(?P<pk>\d+)/$', product_detail_view),
     path('admin/', admin.site.urls),
 ]
 
