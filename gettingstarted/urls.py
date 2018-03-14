@@ -7,16 +7,12 @@ from django.urls import path
 from django.contrib import admin
 admin.autodiscover()
 
-from products.views import (
-                            ProductListView,
-                            product_list_view,
-                            ProductDetailView,
-                            product_detail_view,
-                            ProductFeaturedListView,
-                            ProductFeaturedDetailView)
+#from products.views import ProductListView, product_list_view, ProductDetailView, product_detail_view
 
 import hello.views
-
+import products.urls
+#from towguideline.views import TowEstimatorView #, TowEstimateView
+import towguideline.views
 # Examples:
 # url(r'^$', 'gettingstarted.views.home', name='home'),
 # url(r'^blog/', include('blog.urls')),
@@ -26,15 +22,17 @@ urlpatterns = [
     url(r'^about_page/$', hello.views.about_page, name= 'about_page'),
     url(r'^contact/$', hello.views.contact_page, name= 'contact_page'),
     url(r'^login/$', hello.views.login_page, name= 'login'),
-    url(r'^register/$', hello.views.register_page, name= 'register_page'),
-    url(r'^featured/$', ProductFeaturedListView.as_view()),
-    url(r'^featured/(?P<pk>\d+)/$', ProductFeaturedDetailView.as_view()),
-    url(r'^products/$', ProductListView.as_view()),
-    url(r'^products/$', ProductListView.as_view()),
-    url(r'^products-fbv/$', product_list_view),
-    url(r'^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
-    url(r'^products-fbv/(?P<pk>\d+)/$', product_detail_view),
-    path('admin/', admin.site.urls),
+    url(r'^products/', include("products.urls")),
+    url(r'^towestimator/$', towguideline.views.TowEstimatorView, name= 'TowEstimatorView'),
+    #url(r'^towestimate/$', TowEstimate.as_view()),
+    # url(r'^featured/$', ProductFeaturedListView.as_view()),
+    # url(r'^featured/(?P<pk>\d+)/$', ProductFeaturedDetailView.as_view()),
+    # url(r'^products/$', ProductListView.as_view()),
+    # url(r'^products-fbv/$', product_list_view),
+    # #url(r'^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
+    # url(r'^products/(?P<slug>[\w-]+)/$', ProductDetailSlugView.as_view()),
+    # url(r'^products-fbv/(?P<pk>\d+)/$', product_detail_view),
+    url(r'^admin/', admin.site.urls),
 ]
 
 
