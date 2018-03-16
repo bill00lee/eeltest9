@@ -11,18 +11,22 @@ admin.autodiscover()
 
 import hello.views
 import products.urls
+from django.urls import include, path, re_path, reverse
 #from towguideline.views import TowEstimatorView #, TowEstimateView
 import towguideline.views
 # Examples:
 # url(r'^$', 'gettingstarted.views.home', name='home'),
 # url(r'^blog/', include('blog.urls')),
+app_name = products
 
 urlpatterns = [
-    url(r'^$', hello.views.home_page, name='home_page'),
+    url(r'^$', hello.views.home_page, name='home_url'),
     url(r'^about_page/$', hello.views.about_page, name= 'about_page'),
-    url(r'^contact/$', hello.views.contact_page, name= 'contact_page'),
+    url(r'^contact/$', hello.views.contact_page, name='contact_url'),
     url(r'^login/$', hello.views.login_page, name= 'login'),
-    url(r'^products/', include("products.urls")),
+    #url(r'^products/', include("products.urls", namespace='products')),
+    url(r'^products/', include(('products.urls', 'products'))),
+    url(r'^register/$', hello.views.register_page, name='register'),
     url(r'^towestimator/$', towguideline.views.TowEstimatorView, name= 'TowEstimatorView'),
     #url(r'^towestimate/$', TowEstimate.as_view()),
     # url(r'^featured/$', ProductFeaturedListView.as_view()),
