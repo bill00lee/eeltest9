@@ -9,6 +9,7 @@ from gettingstarted.forms import ContactForm, LoginForm, RegisterForm
 
 # Create your views here.
 def home_page(request):
+    print(request.session.get("first_name", "Unknown"))
     # return HttpResponse('Hello from Python!')
     context = {
         "title":"homepage",

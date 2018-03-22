@@ -43,7 +43,8 @@ INSTALLED_APPS = [
 
     #myapps
     'products',
-    'towguideline'
+    'towguideline',
+    'carts',
 ]
 
 MIDDLEWARE = [

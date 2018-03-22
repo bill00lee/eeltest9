@@ -8,7 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 #from products.views import ProductListView, product_list_view, ProductDetailView, product_detail_view
-
+import carts.views
 import hello.views
 import products.urls
 from django.urls import include, path, re_path, reverse
@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^about_page/$', hello.views.about_page, name= 'about_page'),
     url(r'^contact/$', hello.views.contact_page, name='contact_url'),
     url(r'^login/$', hello.views.login_page, name= 'login'),
+    url(r'^cart/$', carts.views.cart_home, name= 'cart_home'),
     #url(r'^products/', include("products.urls", namespace='products')),
     url(r'^products/', include(('products.urls', 'products'))),
     url(r'^register/$', hello.views.register_page, name='register'),
