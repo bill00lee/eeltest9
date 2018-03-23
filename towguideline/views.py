@@ -13,12 +13,12 @@ from .models import Tow
 
 def TowEstimatorView(request):
     tow_estimator_form = TowEstimatorForm(request.POST or None)
-    qs = Tow.objects.get(pk=1)
-    title1= qs.priceperkms
-    title2= title1 + 1
+  #  qs = Tow.objects.get(pk=1)
+  #  title1= qs.priceperkms
+   # title2= title1 + 1
 
     context = {
-        "title": title2,
+        "title": "title2",
         "content":" Welcome to the estimator page.",
         "form": tow_estimator_form ,
     }

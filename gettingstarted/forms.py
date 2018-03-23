@@ -34,29 +34,29 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 class RegisterForm(forms.Form):
-    username    = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Your username"}))
-    email       = forms.EmailField(widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "email"}))
-    password    = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Password"}))
-    password2    = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Password2"}))
+    username = forms.CharField()
+    email    = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
 
     def clean_username(self):
-        username = self.clean_data.get('username')
+        username = self.cleaned_data.get('username')
         qs = User.objects.filter(username=username)
         if qs.exists():
-             raise form.ValidationError('username already exists')
+            raise forms.ValidationError("Username is taken")
         return username
 
     def clean_email(self):
-        email = self.clean_data.get('email')
+        email = self.cleaned_data.get('email')
         qs = User.objects.filter(email=email)
         if qs.exists():
-            raise form.ValidationError('email already registered')
+            raise forms.ValidationError("email is taken")
         return email
 
-    def clean_data(self):
-        data = self.clean_data.get('data')
-        password = self.clean_data.get('password')
-        password2 = self.clean_data.get('password2')
+    def clean(self):
+        data = self.cleaned_data
+        password = self.cleaned_data.get('password')
+        password2 = self.cleaned_data.get('password2')
         if password2 != password:
-                raise form.ValidationError('passwords do not match')
+            raise forms.ValidationError("Passwords must match.")
         return data
