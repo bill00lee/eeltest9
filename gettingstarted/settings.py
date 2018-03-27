@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'products',
     'towguideline',
     'carts',
+    'search',
 ]
 
 MIDDLEWARE = [

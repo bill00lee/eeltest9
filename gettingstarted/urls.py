@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^contact/$', hello.views.contact_page, name='contact_url'),
     url(r'^login/$', hello.views.login_page, name= 'login'),
     url(r'^cart/', include(('carts.urls', 'cart'))),
+    url(r'^search/', include(('search.urls', 'search'))),
     url(r'^products/', include(('products.urls', 'products'))),
     url(r'^register/$', hello.views.register_page, name='register'),
     url(r'^towestimator/$', towguideline.views.TowEstimatorView, name= 'TowEstimatorView'),
