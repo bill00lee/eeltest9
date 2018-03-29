@@ -42,10 +42,16 @@ INSTALLED_APPS = [
     'hello',
 
     #myapps
+
+    'carts',
     'products',
     'towguideline',
-    'carts',
+    'tags',
     'search',
+    'orders',
+    'accounts',
+    'billing'
+
 ]
 
 MIDDLEWARE = [
@@ -58,6 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGOUT_REDIRECT_URL = '/login/'
 ROOT_URLCONF = 'gettingstarted.urls'
 
 TEMPLATES = [

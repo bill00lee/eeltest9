@@ -1,34 +1,36 @@
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.urls import include, path, re_path, reverse
 from django.conf.urls import include, url
-from django.urls import path
+from django.views.generic import TemplateView
 
 from django.contrib import admin
+from django.contrib.auth.views import LogoutView
 admin.autodiscover()
 
-#from products.views import ProductListView, product_list_view, ProductDetailView, product_detail_view
-import carts.views
+
 import hello.views
+import carts.urls
 import products.urls
-from django.urls import include, path, re_path, reverse
-#from towguideline.views import TowEstimatorView #, TowEstimateView
+import accounts.views
 import towguideline.views
-# Examples:
-# url(r'^$', 'gettingstarted.views.home', name='home'),
-# url(r'^blog/', include('blog.urls')),
+
+from accounts.views import login_page, register_page
+
 app_name = products
 
 urlpatterns = [
     url(r'^$', hello.views.home_page, name='home_url'),
     url(r'^about_page/$', hello.views.about_page, name= 'about_page'),
     url(r'^contact/$', hello.views.contact_page, name='contact_url'),
-    url(r'^login/$', hello.views.login_page, name= 'login'),
+    url(r'^login/$', accounts.views.login_page, name= 'login'),
+    url(r'^logout/$', LogoutView.as_view(), name= 'logout'),
     url(r'^cart/', include(('carts.urls', 'cart'))),
     url(r'^search/', include(('search.urls', 'search'))),
     url(r'^products/', include(('products.urls', 'products'))),
-    url(r'^register/$', hello.views.register_page, name='register'),
-    url(r'^towestimator/$', towguideline.views.TowEstimatorView, name= 'TowEstimatorView'),
+    url(r'^register/$', accounts.views.register_page, name='register'),
+    url(r'^register/guest/$', accounts.views.guest_register_view, name='guest_register'),
+    url(r'^estimator/$', towguideline.views.TowEstimatorView, name= 'Tow_Estimator_View'),
     url(r'^admin/', admin.site.urls),
 ]
 
