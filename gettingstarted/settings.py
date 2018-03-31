@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     #myapps
 
+    'addresses',
     'carts',
     'products',
     'towguideline',
