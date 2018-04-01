@@ -1,7 +1,7 @@
-checkout.html   x
-cart/home.html  x
-orders/model.   x
-cart/views.py   x
+checkout.html                           x
+cart/home.html                          x
+orders/model.                           x
+cart/views.py                           x
 addresses.views. (authenticated(),)     X
 templates/base/navbar cart_items        X
 carts/urls  -  gettingstarted/urls.py   x
@@ -28,3 +28,12 @@ accounts/admin.py
 accounts/forms.py
 settings.py "AUTH_USER_MODEL"
 gettingstarted/urls.py - added imports
+
+
+12. Custom Analytics
+analytics/models.py
+gettingstarted/settings
+products/views.py productdetailsslug
+accounts/views.py
+accounts/signal.py
+
