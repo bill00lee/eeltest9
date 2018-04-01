@@ -1,0 +1,100 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "p1",
+        "slug": "p1",
+        "description": "p1 description",
+        "price": "39.99",
+        "image": "",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-03-26T13:21:00.752Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "p2",
+        "slug": "p2",
+        "description": "p2 description",
+        "price": "39.99",
+        "image": "",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-03-26T13:21:00.752Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "p3",
+        "slug": "p3",
+        "description": "p3 description",
+        "price": "39.99",
+        "image": "",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-03-26T13:21:00.752Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "p4",
+        "slug": "p4",
+        "description": "p4 descriptino",
+        "price": "39.99",
+        "image": "products/483674995/483674995.jpg",
+        "featured": false,
+        "active": true,
+        "timestamp": "2018-03-26T13:21:00.752Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "p5",
+        "slug": "p5",
+        "description": "p5 description",
+        "price": "39.99",
+        "image": "products/359955612/359955612.jpg",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-03-26T13:21:00.752Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "title": "Shirt",
+        "slug": "shirt",
+        "description": "description of shirt",
+        "price": "39.99",
+        "image": "products/3842183611/3842183611.jpg",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-03-27T13:55:16.493Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "title": "Hat",
+        "slug": "hat",
+        "description": "Hat desciption",
+        "price": "139.99",
+        "image": "products/2452063448/2452063448.jpg",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-03-27T13:55:37.645Z"
+    }
+}
+]

@@ -16,7 +16,7 @@ import accounts.views
 import towguideline.views
 import addresses.views
 
-from accounts.views import login_page, register_page
+from accounts.views import LoginView, RegisterView, guest_register_view
 
 app_name = products
 
@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^$', hello.views.home_page, name='home_url'),
     url(r'^about_page/$', hello.views.about_page, name= 'about_page'),
     url(r'^contact/$', hello.views.contact_page, name='contact_url'),
-    url(r'^login/$', accounts.views.login_page, name= 'login'),
+    url(r'^logout/$', LoginView.as_view(), name='login'),
     url(r'^checkout/address/create/$', addresses.views.checkout_address_create_view, name='checkout_address_create'),
     url(r'^checkout/address/reuse/$', addresses.views.checkout_address_reuse_view, name='checkout_address_reuse'),
     url(r'^logout/$', LogoutView.as_view(), name= 'logout'),
@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^api/cart/$', cart_detail_api_view, name='api-cart'),
     url(r'^cart/', include(('carts.urls', 'cart'))),
     url(r'^products/', include(('products.urls', 'products'))),
-    url(r'^register/$', accounts.views.register_page, name='register'),
+    url(r'^register/$', RegisterView.as_view(), name='register'),
     url(r'^estimator/$', towguideline.views.TowEstimatorView, name= 'Tow_Estimator_View'),
     url(r'^search/', include(('search.urls', 'search'))),
     url(r'^admin/', admin.site.urls),

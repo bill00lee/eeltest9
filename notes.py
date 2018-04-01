@@ -9,6 +9,7 @@ carts/urls  -  gettingstarted/urls.py   x
 jquery:
 fasttrack to jquery
 
+
 10. Products & Async
 products/templates.update-cart.html     x
 base.html                               x
@@ -19,3 +20,11 @@ base/urls.py                            x
 static/js/
 hello.views contact_page( )             x
 templates/contact/views.html            x
+
+
+11. Custom User Model
+accounts/models.py
+accounts/admin.py
+accounts/forms.py
+settings.py "AUTH_USER_MODEL"
+gettingstarted/urls.py - added imports
