@@ -9,6 +9,7 @@ django-heroku = "*"
 requests = "*"
 Pillow = "*"
 django = "*"
+stripe = "*"
 
 [requires]
 python_version = "3.6"
