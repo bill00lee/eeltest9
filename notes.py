@@ -77,6 +77,8 @@ settings.BASE_DIR
 import os
 manage_path = os.path.join(settings.BASE_DIR, "manage.py")
 
+setting/local, production, base.py
+
 create .gitignore  change settings
 
 setting up staticfiles aws
